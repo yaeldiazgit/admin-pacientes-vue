@@ -1,9 +1,13 @@
 <script setup>
-    import { reactive } from "vue";
+    import { reactive, computed } from "vue";
     import Alerta from "./Alerta.vue";
 
 
     const props = defineProps({
+        id: {
+            type: [String, null],
+            required: true
+        },
         nombre: {
             type: String,
             required: true
@@ -37,11 +41,22 @@
             alerta.tipo = 'error';
             return
         }
+        emit("guardar-pacientes");
         alerta.mensaje = 'Guardado correctamente...';
         alerta.tipo = 'ok';
-    }
 
-    defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas']);
+        setTimeout(() => {
+            Object.assign(alerta, {
+                mensaje: '',
+                tipo: ''
+            })
+        }, 1500);
+    }
+    const botonRegistrar = computed(() => {
+        return props.id ? 'Actualizar Paciente' : 'Registrar Paciente';
+    });
+
+    const emit = defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas', 'guardar-pacientes']);
 
 </script>
 
@@ -140,7 +155,7 @@
                     type="submit"
                     class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 
                     cursor-pointer transition-colors " 
-                    value="Registrar Paciente"/>
+                    :value="botonRegistrar"/>
             </div>
 
         </form>
