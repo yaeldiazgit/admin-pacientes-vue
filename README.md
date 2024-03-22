@@ -1,4 +1,4 @@
-# Guitar LA
+# Administrador de pacientes Veterinaria
 
 Seguimiento de pacientes en veterinaria en el cual se ingresan los datos de la mascota en un formulario y se van listando, se agrega un id aleatorio a cada registro para posteriormente poder editar o eliminar cada uno, estos datos se persisten en localStorage con cada cambio y se cargan de manera automática al recargar la página. Todo con el uso de Vue 3 utilizando Componentes, State, Eventos, Custom Events, Props, Emits, Directivas, Watch, Computed y creando los estilos con tailwind.
 
